@@ -1,6 +1,7 @@
 package GameUI;
 
 import GameLogic.rps;
+//import Images.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
@@ -37,18 +38,18 @@ public class rpsUI extends Application {
         Label PCScore = createLabel("My Score: " + rps.getScore(1, score), 20);
         Vcolumn.getChildren().addAll(playerScore, PCScore);
 
-        Button paperBtn =  createButton("Paper", "handPaperPNG.png", 200, 200, 180);
+        Button paperBtn =  createButton("Paper", "/Images/handPaperPNG.png", 200, 200, 180);
         paperBtn.layoutXProperty().bind(pane.widthProperty().divide(2).subtract(100));
         paperBtn.layoutYProperty().bind(pane.heightProperty().divide(4).subtract(100));
         paperBtn.setOnAction(e -> gameScene(stage, "paper", score));
 
-        Button rockBtn =  createButton("Rock", "handRockPNG.png", 200, 200, 15);
+        Button rockBtn =  createButton("Rock", "/Images/handRockPNG.png", 200, 200, 15);
         rockBtn.layoutXProperty().bind(pane.widthProperty().divide(32).multiply(10).subtract(100));
         rockBtn.layoutYProperty().bind(pane.heightProperty().divide(8).multiply(5).subtract(100));
         rockBtn.setOnAction(e -> gameScene(stage, "rock", score));
 
         Button scissorsBtn =
-                createButton("Scissors", "handScissorsPNG.png", 200, 200, -15);
+                createButton("Scissors", "/Images/handScissorsPNG.png", 200, 200, -15);
         scissorsBtn.layoutXProperty().bind(pane.widthProperty().divide(32).multiply(22).subtract(100));
         scissorsBtn.layoutYProperty().bind(pane.heightProperty().divide(8).multiply(5).subtract(100));
         scissorsBtn.setOnAction(e -> gameScene(stage, "scissors", score));
@@ -154,11 +155,10 @@ public class rpsUI extends Application {
         }
     }
 
-    public static Button createButton(String name, String address, double width, double height, int rotation) {
+    public Button createButton(String name, String address, double width, double height, int rotation) {
         Button button = new Button();
 
-        Image image = new Image("file:\\C:\\Users\\twili\\IdeaProjects\\RPS\\src" +
-                "\\main\\java\\Images\\" + address);
+        Image image = new Image(getClass().getResourceAsStream(address));
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(width);
         imageView.setFitHeight(height);
