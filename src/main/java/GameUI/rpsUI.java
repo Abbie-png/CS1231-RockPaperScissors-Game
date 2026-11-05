@@ -1,7 +1,6 @@
 package GameUI;
 
 import GameLogic.rps;
-//import Images.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
